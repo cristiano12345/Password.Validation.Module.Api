@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "wSsMPq7DGMgc/GwqVQq34UzhorVqOOdLv2cjBaxpTB3eWj0cqpOCRp5/3x1ICSwF1jgdzUqXGUEyR0YlVNa2iA==",
+  "success": true,
+  "projectFilePath": "C:\\dev\\Password.Validation.Module\\Password.Validation.Module.Application\\Password.Validation.Module.Application.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\cristiano.andrade\\.nuget\\packages\\fluentvalidation\\10.4.0\\fluentvalidation.10.4.0.nupkg.sha512",
+    "C:\\Users\\cristiano.andrade\\.nuget\\packages\\mediatr\\10.0.1\\mediatr.10.0.1.nupkg.sha512",
+    "C:\\Users\\cristiano.andrade\\.nuget\\packages\\mediatr.contracts\\1.0.1\\mediatr.contracts.1.0.1.nupkg.sha512",
+    "C:\\Users\\cristiano.andrade\\.nuget\\packages\\netdevpack\\6.0.1\\netdevpack.6.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}
