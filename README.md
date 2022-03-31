@@ -1,7 +1,5 @@
-## **Repositório: **
 
-
-Api para cumprir o desafio de criar uma API robusta que possua inicialmente um *endpoint* para validação de senha.
+## **Desafio Backend CRISTIANO ANDRADE**
 
 ## **Critério de validação**
 
@@ -30,18 +28,20 @@ IsValid("AbTp9!fok") // true
 
 > **_Nota:_**  Espaços em branco não são considerados como caracteres válidos.
 
-## **Premissas consideradas**
+## **Arquitetura**
+*Clean Architecture foi a filosofia de design de software escolhida como padrão foi utilizada  
+para facilitar o desenvolvimento, manutenção e desacoplamento.
 
-Tendo como base que a validação senha é algo bem simples e a princípio pode ser resolvido com uma *expressão regular* e 
-poucas linhas de código, levou-se em consideração o seguinte:
+*CQRS Pattern foi implementado para manter responsabilidades de leitura(em uma feature futura...) e escrita segregadas
+isso pode nos garantir escalabilidade e melhor padrão organizacional 
 
-* Esta api poderá estar inserida em um ecosistema maior que precise de escalabilidade e disponibilidade.
-* A necessidade de estar preparada para receber novas features/funcionalidades sem degradar desempenho. 
-E isso também justifica a decisão do *pattern* escolhido (CQRS)
-* Que as regras de validação da senha é algo que possa ser modificado de forma rápida e por isso foi implementado o pattern "Specification"
+*Specification Pattern é um padrão de design de software, 
+onde regras de negócio podem ser recombinadas através de lógica booleana, 
+podemos respeitar varios principios do SOLID com a aplicação deste patter ex: "Single Responsibility Principle" + "open–closed principle"
+segregando responsabilidades e estando pronto para extender sem modificar 
 
-* **Design de API:** Para criação da API seguiu-se o padrão de maturidade de REST. 
-* **Endpoint:** O proposto foi a criação de um endpoint que recebesse uma senha para validação e devolvesse um booleano como resposta.
+*RESTful foi o modelo escolhido como interface de programação da aplicação(API)
+
 ### **Organização da Solução**
 
 O projeto está organizado da seguinte forma:
@@ -62,31 +62,28 @@ O projeto está organizado da seguinte forma:
 
 Onde:
 
-* `Password.Validation.Module.Api`: É onde fica o código responsável pela exposição da API.
-* `Password.Validation.Module.Application`: Aqui ficam os *handlers* das requisições feitas a API, aqui são implementados os casos de usos.
-* `Password.Validation.Module.Contract`: Projeto de modelos anêmicos dos quais apenas os contratos/models são implementados.
-* `Password.Validation.Module.Service`: Aqui estão as regras da aplicação, todas as regras de negócios são implementadas aqui.
-* `Password.Validation.Module.CrossCutting`: Aqui é a camada que faz o cruzamento de todas as demais, que "não se conhecem" mas que dependem indiretamente entre si, como o mecanismo de Injeção de Dependência.
-* `Password.Validation.Module.Test`: Esta é a camada onde são estritors todos os testes.
+* `Password.Validation.Module.Api`: Interface de programação da aplicação *(API)*
+* `Password.Validation.Module.Application`: *Handlers* e casos de uso da aplicação
+* `Password.Validation.Module.Contract`: Entidades e contratos da aplicação.
+* `Password.Validation.Module.Service`: Regras de negocio da aplicação.
+* `Password.Validation.Module.CrossCutting`: Container de Injeção de Dependência Ioc.
+* `Password.Validation.Module.Test`: Aqui garantimos a integridade das alterações e aumentamos a qualidade da aplicação *Testes*.
 
-## **Rotas & Contratos**
-
-Essa api possui apenas um endpoint/rota que deve ser utilizado para chamadas de validação de senha:
+## **Endpoint**
 
 ```c#
 POST /api/password/validate
 ```
 
-Os contratos/modelos de requisição e respostas são:
+## **Requisição**
 
-*Requisição*
 ```c#
 {
   "password": "string"
 }
 ```
 
-*Resposta
+## **Resposta**
 ```c#
 {
   "password": true|false
@@ -95,7 +92,7 @@ Os contratos/modelos de requisição e respostas são:
 
 ## **Execução usando Visual Studio**
 
-* Faça o clone deste repositório
+* Clone este repositório
 * Abra o projeto através do arquivo [`Password.Validation.Module.sln`]
 * Defina o projeto `Password.Validation.Module.Api` como sendo o *start-up* da solução.
 * Selecione o perfil de execução como `Kestrel`.
@@ -103,8 +100,5 @@ Os contratos/modelos de requisição e respostas são:
 * Abra o navegador de sua preferência e acesse o endereço [http://localhost:5000] ou http://localhost:5000/swagger/index.html])
 * Uma página do swagger com a documentação da api será apresentada e com opção de realização de chamadas de testes (`try out`)
 
-Obrigado, estou à disposição!
+## **SUCCESS......................**
 
-Nome: Cristiano Alberto De Andrade
-Email: cristiano.a.andrade@hotmail.com
-Celular: 11 963752767
